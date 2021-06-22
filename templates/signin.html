@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/css/sign.css"/>
+    <meta charset="utf-8">
+    <title>signin</title>
+</head>
+<body>
+    <div id = "wrapper" class = "wrapper">
+    	<div id = "top" class = "nav">
+    		<ul>
+                <a href = "../welcome">返回主页</a>
+    			<li><a href = "../signup">注册</a></li>
+    		</ul>
+    	</div>
+    	<div id = "body" class = "nav">
+    		<form action="/signin" method="post">
+                <image id = "logo" src = "../static/image/logo.png"/>
+                {% csrf_token %}
+                <p id = "t" class="inputp">登录</p>
+                <p id = "namep" class = "inputp">
+                    <span class="spantitle">用户：</span>
+                    <input id = "username" type="text" name="username" class = "in">
+                </p>
+                <p id = "passp" class = "inputp">
+                    <span class="spantitle">密码：</span>
+                    <input id = "password" type="password" name="password" class="in">
+                </p>
+                <p id = "submitspan" class = "inputp">
+                    <input id = "submit" type="submit" value="Ok">
+                </p>
+                <p id = "checkp">{{check}}</p>
+            </form>
+    	</div>
+    </div>
+</body>
+</html>

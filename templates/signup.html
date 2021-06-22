@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/css/sign.css"/>
+    <meta charset="utf-8">
+    <title>signup</title>
+</head>
+<body>
+    <div id = "wrapper" class = "wrapper">
+        <div id = "top" class = "nav">
+
+            <ul id = "log">
+                <a href = "../welcome">返回主页</a>
+                <li><a href = "../signin">登录</a></li>
+            </ul>
+        </div>
+        <div id = "body" class = "nav">
+            <image id = "logo" src = "../static/image/logo.png"/>
+            <form action="/signup" method="post">
+                {% csrf_token %}
+                <p id = "t" class="inputp">注册</p>
+                <p id = "nameup" class = 'inputp'>
+                    <span class="spantitle">用户：</span>
+                    <input id = "username" type="text" name="username" class = "in">
+
+                </p>
+                <p id = "passup" class = 'inputp'>
+                    <span class="spantitle">密码：</span>
+                    <input id = "password" type="password" name="password" class = "in">
+                </p>
+                <p id = "reup" class = 'inputp'>
+                    <span class="spantitle">确认：</span>
+                <input id = "repassword" type="password" name="repassword" class = "in">
+                </p>
+                <input id = "submit" type="submit" value="Ok">
+                <p id = "checkp">{{check}}</p>
+            </form>
+        </div>
+        <div id = "bottom" class = "nav">
+            <p>{{name}}</p>
+        </div>
+    </div>
+</body>
+</html>

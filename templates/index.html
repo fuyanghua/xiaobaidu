@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../static/css/index.css"/>
+	<meta charset="utf-8">
+	<title>xiaobaidu</title>
+</head>
+<body>
+    <div id = "wrapper" class = "wrapper">
+    	<div id = "top" class = "nav">
+    		<ul id = "log">
+    			<a href = "../signin">登录</a>
+    			<li><a href = "../signup">注册</a></li>
+    		</ul>
+    	</div>
+    	<div id = "body" class = "nav">
+    		<image id = "logo" src = "../static/image/logo.png"/>
+    		<form action="/search" method="post">
+                {% csrf_token %}
+    			<span id = "textspan" class = "searchspan">
+        			<input id = "text" type="text" name="searchtext">
+        		</span>
+        		<span id = "submitspan" class = "searchspan">
+        			<input id = "submit" type="submit" value="搜索">
+        		</span>
+    		</form>
+    	</div>
+    	<div id = "result" class = "nav">
+            <div id = "hotdiv">
+    		  <p class = 'title'>热门词汇</p>
+              <ul id = "hotul">
+                {% for hot in hotlist %}
+                    <li class = 'hotpoint'><span class = 'hotspan' onclick="changetext(this.innerHTML)">{{hot}}</span></li>
+                {% endfor %}
+            </ul>
+            </div>
+    	</div>
+        <script type="text/javascript">
+            function changetext(text){
+                document.getElementById('text').value=text;
+            }
+        </script>
+    </div>
+</body>
+</html>

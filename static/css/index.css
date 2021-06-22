@@ -1,0 +1,151 @@
+@charset utf-8;
+
+body{ 
+	text-align:center;
+	height: 100vh;
+	width: 100vw;
+	margin:0;
+} 
+#wrapper{
+	position: absolute;
+	width:100%;
+	height: 100%;
+}
+
+.nav{
+	margin-top:1%;
+	margin-left:1%;
+	margin-right:1%;
+	text-align:center;
+}
+
+#top{
+	height: 20%;
+}
+
+#result{
+	height: 42%;
+}
+
+#hotul{
+	float:left;
+	padding-left:8%;
+}
+
+#historyul{
+	float:left;
+}
+
+.hotpoint,.historypoint{
+	padding-bottom:7%;
+	cursor: pointer;
+	color:red;
+	list-style:decimal;
+}
+
+.hotspan,.historyspan{
+	color:#000;
+}
+
+#hotdiv{
+	padding-left:28%;
+	float:left;
+	width:30%;
+}
+
+#history{
+	float:left;
+}
+
+.title{
+	text-align:left;
+	font-weight:bold;
+}
+
+#body{
+	height: 30%;
+}
+
+
+#log{
+	padding:0;
+	margin:0;
+	width:100%;
+}
+
+#log li{
+	list-style:none;
+	float:left;
+	margin-left:90%;
+}
+
+#logo{
+	height:50%;
+}
+
+form{
+	margin-top:0;
+	padding-top:1%;
+	height:40%;
+}
+
+input{
+	padding:0;
+	margin:0;
+}
+
+.searchspan{
+	display: inline-block;
+    background: 0 0;
+    vertical-align: middle;
+    height: 80%;
+    width:6%;
+    font-size: 0px;
+    text-align: center;
+}
+
+#textspan{
+	width: 40%
+}
+
+#topname{
+	cursor:default;
+	text-decoration:none;
+}
+
+#text{
+	width:90%;
+	height: 60%;
+    font-size: 16px;
+    padding: 0;
+    padding-left:2%;
+    padding-right:2%;
+    margin: 0;
+    vertical-align: top;
+    outline: 0;
+    box-shadow: none;
+    border-radius: 10px 10px 10px 10px;
+    border: 2px solid #c4c7ce;
+    background: #fff;
+    color: #222;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+#submit{
+	width:100%;
+	height:60%;
+	cursor: pointer;
+    line-height: 45px;
+    line-height: 44px\9;
+    padding: 0;
+    background: 0 0;
+    background-color: #4e6ef2;
+    border-radius: 10px 10px 10px 10px;
+    font-size: 17px;
+    color: #fff;
+    box-shadow: none;
+    font-weight: 400;
+    border: none;
+    outline: 0;
+}

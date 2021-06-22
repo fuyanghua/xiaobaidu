@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/css/sign.css"/>
+    <meta charset="utf-8">
+    <title>signup</title>
+</head>
+<body>
+    <div id = "wrapper" class = "wrapper">
+        <div id = "top" class = "nav">
+            <ul id = "log">
+                <li><a href = "../signin">sign in</a></li>
+            </ul>
+        </div>
+        <div id = "body" class = "nav">
+            {% for l in list %}
+                <p>id: {{l.id}} user: {{l.name}} pass: {{l.password}}</p>
+            {% endfor %}
+        </div>
+        <div id = "bottom" class = "nav">
+            <p>{{name}}</p>
+        </div>
+    </div>
+</body>
+</html>

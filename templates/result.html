@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../static/css/result.css"/>
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/echarts.js"></script>
+	<meta charset="utf-8">
+	<title>xiaobaidu</title>
+</head>
+<body>
+    <div id = "wrapper" class = "wrapper">
+        <image id = "logo" src = "../static/image/logo.png"/>
+        <div id = "top">
+        <p id = "titlep">{{pctext}}</p>
+        <ul id = "log">
+            <li><a href = "../welcome">返回主页 </a></li>
+            {% if num > 1 %}
+            <li><a id = 'next' href = '#' onclick="chart()">下一页</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    	<div id = "result" class = "nav">
+    	</div>
+    </div>
+    <script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('result'));
+    var index = 0;
+    var result = {{result|safe}};
+    function chart(){
+        var myChart = echarts.init(document.getElementById('result'));
+        var series = [];
+        var data = [];
+        var categories = [];
+        var kernel = result[index]['00000000'];
+        var name_list = [kernel];
+        var data_list = [{name:kernel,des:kernel,symbolSize:80}];
+        var link_list = [];
+        var k = 0;
+        for(var key in result[index]){
+            if(key == '00000000'){
+                continue;
+            }
+            var symbolSize = 80;
+            symbolSize -= result[index][key].length;
+            categories.push({name:key,symbolSize:symbolSize})
+            for(var j=0;j<result[index][key].length;j++){
+                var a = false;
+                for(var z=0;z<name_list.length;z++){
+                    if(name_list[z] == result[index][key][j]){
+                        a = true;
+                        break;
+                    }
+                }
+                if(a){
+                    continue;
+                }
+                data_list.push({name: result[index][key][j],des: result[index][key][j],category: k});
+                link_list.push({source: kernel,target: result[index][key][j],name:'',des: ''});
+                name_list.push(result[index][key][j]);
+            }
+            k++;
+        }
+        console.log(data_list);
+        series.push({
+            type: 'graph',
+            layout: 'force',
+            zoom:1,
+            symbolSize: 40,
+            roam: true,
+            edgeSymbol: ['circle', 'arrow'],
+            edgeSymbolSize: [2, 10],
+            edgeLabel: {
+                normal: {
+                    textStyle: {
+                        fontSize: 20
+                    }
+                }
+            },
+            force: {
+                repulsion: 1400,
+                edgeLength: [10, 50],
+                // layoutAnimation: false
+
+            },
+            lineStyle: {
+                normal: {
+                    width: 1,
+                    color: '#4b565b',
+                }
+            },
+            edgeLabel: {
+                normal: {
+                    show: true,
+                    formatter: function (x) {
+                        return x.data.name;
+                    }
+                }
+            },
+            label: {
+                normal: {
+                    show: true,
+                    textStyle: {}
+                }
+            },
+            data:data_list,
+            links:link_list,
+            categories:categories
+        });
+    
+    option = {
+        title: {
+            text: ''
+        },
+        tooltip: {
+            formatter: function (x) {
+                return x.data.des;
+            }
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                saveAsImage: {
+                    show: true
+                }
+            }
+        },
+        legend: [{
+            data: categories.map(function (a) {
+                return a.name;
+            })
+        }],
+        series: series
+        };
+        if(index == (result.length-1)){
+            index = 0;
+        }
+        else{
+            index++;
+        }
+        myChart.setOption(option,true);
+    }
+    chart();
+    
+    window.onresize = function(){
+        myChart.resize();
+    }
+    </script>
+</body>
+</html>
